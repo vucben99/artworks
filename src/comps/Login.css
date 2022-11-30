@@ -1,0 +1,35 @@
+.login-box {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(37, 37, 37, 0.674);
+    padding: 40px 80px;
+    border-radius: 10px;
+    max-width: 400px;
+    gap: 10px;
+}
+
+.login-box h2 {
+    color: rgb(238, 238, 238);
+}
+
+.login-box input {
+    padding: .5em 1.5em;
+    border-radius: 10px;
+    border: none;
+    font-size: 1em;
+}
+
+.login-box button {
+    padding: .5em 1em;
+    border-radius: 10px;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.login-form-btns {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 10px;
+}

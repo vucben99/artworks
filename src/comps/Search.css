@@ -1,0 +1,19 @@
+.search-box {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 8px;
+}
+
+.search-box input {
+    padding: .5em 1em;
+    border-radius: 5px;
+}
+
+.search-box button {
+    padding: .5em 1em;
+    cursor: pointer;
+}
+
+.search-box input:focus {
+    outline: 1px solid blue;
+}
