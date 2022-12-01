@@ -9,7 +9,7 @@ function Card({ imgObj }) {
 
     return (
         <li>
-            <img src={imgObj.url} alt={imgObj.title} />
+            <img src={imgObj.url.replace("original","web-large")} alt={imgObj.title} />
             <div className='card-text'>
                 <h2>
                     {imgObj.title}
