@@ -76,20 +76,20 @@ function App() {
       "url": "https://images.metmuseum.org/CRDImages/ep/original/DP-687-001.jpg"
     },
     {
-      "id": 459110,
-      "title": "A sarki kisbolt",
-      "artist": "Zsuga Bubus",
-      "date": "2022",
-      "description": "https://www.facebook.com/photo/?fbid=586727183156866&set=a.586727149823536",
-      "url": "https://scontent-vie1-1.xx.fbcdn.net/v/t39.30808-6/302154227_586727176490200_5651389768103080665_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=Z8xutsXKa6oAX_FZorS&_nc_ht=scontent-vie1-1.xx&oh=00_AfDoZlh666k4mN79kRavKnDxLh9Zj5Fj_NChIgLNLzB-nw&oe=638EBBCE"
-    },
-    {
       "id": 436532,
       "title": "Self-Portrait with a Straw Hat (obverse: The Potato Peeler)",
       "artist": "Vincent van Gogh",
       "date": "1887",
       "description": "https://www.metmuseum.org/art/collection/search/436532",
       "url": "https://images.metmuseum.org/CRDImages/ep/original/DT1502_cropped2.jpg"
+    },
+    {
+      "id": 459110,
+      "title": "A sarki kisbolt",
+      "artist": "Terence Hill (alias Zsuga Bubus)",
+      "date": "2022",
+      "description": "https://www.facebook.com/photo/?fbid=586727183156866&set=a.586727149823536",
+      "url": "https://scontent-vie1-1.xx.fbcdn.net/v/t39.30808-6/302154227_586727176490200_5651389768103080665_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=Z8xutsXKa6oAX_FZorS&_nc_ht=scontent-vie1-1.xx&oh=00_AfDoZlh666k4mN79kRavKnDxLh9Zj5Fj_NChIgLNLzB-nw&oe=638EBBCE"
     }
   ])
   const [loadingImgs, setLoadingImgs] = useState(false)

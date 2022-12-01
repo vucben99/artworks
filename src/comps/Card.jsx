@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import './Card.css'
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai"
+import { AiOutlineDownload } from 'react-icons/ai';
 
 function Card({ imgObj }) {
 
@@ -17,6 +18,7 @@ function Card({ imgObj }) {
                 <p>Artist: {imgObj.artist}</p>
                 <p>Date: {imgObj.date}</p>
                 <p>More info <a href={imgObj.description}>here</a></p>
+                <p><a href={imgObj.url} download={"./"+imgObj.id+"jpg"} target="_blank"><AiOutlineDownload/></a></p>
             </div>
         </li>
     )
