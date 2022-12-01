@@ -10,7 +10,7 @@ function CardWrapper({ loadingImgs, imgList }) {
                 {imgList.length ? (
                     <ul>
                         {imgList.map((imgObj) => <Card imgObj={imgObj} key={imgObj.id} />)}
-                    </ul>) : <span className='no-result-text'>Whoops, it looks like there are no results. </span>
+                    </ul>) : <span className='no-result-text'>Whoops, looks like there are no results.</span>
                 }
             </main>
         )
