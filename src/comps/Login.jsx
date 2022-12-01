@@ -9,8 +9,9 @@ function Login({ setIsLoggedIn }) {
             <TextField id="outlined-basic" label="Username" variant="outlined" />
             <TextField id="outlined-basic" label="Password" variant="outlined" type="password" />
             <div className='login-form-btns'>
-                <Button variant="contained" onClick={() => setIsLoggedIn(true)}>Login</Button>
+                <Button variant="contained" >Login</Button>
                 <Button variant="contained">Register</Button>
+                <Button variant="contained" onClick={() => setIsLoggedIn(true)}>Guest</Button>
             </div>
         </form>
     )
