@@ -1,14 +1,16 @@
 import './Login.css'
+import Button from '@mui/material/Button'
+import TextField from '@mui/material/TextField'
 
-function Login({setIsLoggedIn}) {
+function Login({ setIsLoggedIn }) {
     return (
         <form className='login-box'>
             <h2>Login or register</h2>
-            <input type="text" placeholder="Username" />
-            <input type="password" placeholder="Password" />
+            <TextField id="outlined-basic" label="Username" variant="outlined" />
+            <TextField id="outlined-basic" label="Password" variant="outlined" type="password" />
             <div className='login-form-btns'>
-                <button onClick={() => setIsLoggedIn(true)}>Login</button>
-                <button>Register</button>
+                <Button variant="contained" onClick={() => setIsLoggedIn(true)}>Login</Button>
+                <Button variant="contained">Register</Button>
             </div>
         </form>
     )

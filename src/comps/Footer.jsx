@@ -3,7 +3,7 @@ import './Footer.css'
 function Footer() {
     return (
         <footer>
-            Kopirájt
+            © 2022 Team Bozkov
         </footer>
     )
 }

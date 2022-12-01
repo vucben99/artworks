@@ -1,6 +1,8 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import './Search.css'
-
+import TextField from '@mui/material/TextField'
+import Button from '@mui/material/Button'
+import { BsSearch } from 'react-icons/bs'
 
 function Search({ loadObjectIDs }) {
 
@@ -14,8 +16,8 @@ function Search({ loadObjectIDs }) {
 
     return (
         <form className="search-box" onSubmit={(e) => searchHandler(e, searchText)}>
-            <input value={searchText} onChange={(e) => setSearchText(e.target.value)} type="text" placeholder="Search" />
-            <button type="submit">Search</button>
+            <TextField onChange={(e) => setSearchText(e.target.value)} value={searchText} id="outlined-basic" label="Search..." variant="outlined" type="searchfield" />
+            <Button type="submit" variant="contained"><BsSearch /></Button>
         </form>
     )
 }

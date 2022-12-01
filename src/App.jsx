@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import './App.css'
 import Nav from './comps/Nav'
 import CardWrapper from './comps/CardWrapper'
@@ -133,7 +133,7 @@ function App() {
   return (
     isLoggedIn ? (
       <main className='main-page'>
-        <Nav setIsLoggedIn={setIsLoggedIn} />
+        <Nav setIsLoggedIn={setIsLoggedIn} loadObjectIDs={loadObjectIDs} />
         <CardWrapper loadObjectIDs={loadObjectIDs} loadingImgs={loadingImgs} imgList={imgList} />
         <Footer />
       </main>

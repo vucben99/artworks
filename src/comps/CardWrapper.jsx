@@ -1,20 +1,19 @@
 import Card from './Card'
-import Search from './Search'
 import LoadingSpinner from './LoadingSpinner'
 import './CardWrapper.css'
 
-function CardWrapper({ loadObjectIDs, loadingImgs, imgList }) {
-
-
+function CardWrapper({ loadingImgs, imgList }) {
 
     return (
-        loadingImgs ? <LoadingSpinner /> :
+        loadingImgs ? <LoadingSpinner /> : (
             <main>
-                <Search loadObjectIDs={loadObjectIDs} />
-                <ul>
-                    {imgList.map((imgObj) => <Card imgObj={imgObj} key={imgObj.id} />)}
-                </ul>
+                {imgList.length ? (
+                    <ul>
+                        {imgList.map((imgObj) => <Card imgObj={imgObj} key={imgObj.id} />)}
+                    </ul>) : <span className='no-result-text'>Whoops, it looks like there are no results. </span>
+                }
             </main>
+        )
     )
 }
 
