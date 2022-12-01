@@ -1,12 +1,12 @@
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import './Nav.css'
 
-function Nav({setIsLoggedIn}) {
-    
+function Nav({ setIsLoggedIn }) {
+
 
     return (
         <nav>
-            <h1>Art project</h1>
+            <h1>Bozkov Art Magazine</h1>
             <span className="nav-link" onClick={() => setIsLoggedIn(false)}>Log out</span>
         </nav>
     )
