@@ -7,9 +7,26 @@ import { saveAs } from "file-saver";
 function Card({ imgObj }) {
   const [isFav, setIsFav] = useState(false);
 
-  // const downloadImg = (url) => {
-  //   saveAs(url, "valami.jpg");
-  // };
+  const download = (e) => {
+    console.log(e.target.href);
+    fetch(e.target.href, {
+      method: "GET",
+      headers: {},
+    })
+      .then((response) => {
+        response.arrayBuffer().then(function (buffer) {
+          const url = window.URL.createObjectURL(new Blob([buffer]));
+          const link = document.createElement("a");
+          link.href = url;
+          link.setAttribute("download", "image.jpg"); //or any other extension
+          document.body.appendChild(link);
+          link.click();
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <li>
@@ -43,8 +60,8 @@ function Card({ imgObj }) {
           <a
             href={imgObj.url}
             target="_blank"
-            download={imgObj.url}
-            // onClick={downloadImg(imgObj.url)}
+            download
+            onClick={(e) => download(e)}
           >
             <AiOutlineDownload />
           </a>
