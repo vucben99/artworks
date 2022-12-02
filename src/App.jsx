@@ -41,24 +41,26 @@ function App() {
 
   const loadObjectIDs = async (searchText) => {
     setLoadingImgs(true)
+    setImgList([])
     const res = await axios.get(
       `https://collectionapi.metmuseum.org/public/collection/v1/search?isHighlight=true&hasImages=true&medium=Paintings&q=${searchText}`
     )
 
     const objectIDs = res.data.objectIDs
 
-    let imgObjArr = []
+    // let imgObjArr = []
     for (const index in objectIDs) {
       const id = objectIDs[index]
       const imgObj = await makeImgObj(id)
       if (imgObj.url === "") { continue }
       console.log(imgObj)
-      imgObjArr.push(imgObj)
-      if (imgObjArr.length >= 15) break
+      // imgObjArr.push(imgObj)
+      setImgList(prev => [...prev, imgObj])
+      setLoadingImgs(false)
+      // if (Number(index) >= 10) break
     }
-    setImgList(imgObjArr)
-    setLoadingImgs(false)
-    console.log(imgObjArr)
+    // setImgList(imgObjArr)
+    // console.log(imgObjArr)
   }
 
   return (
