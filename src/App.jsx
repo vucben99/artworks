@@ -6,13 +6,25 @@ import Login from './comps/Login'
 import Footer from './comps/Footer'
 import axios from "axios"
 import basicImages from "./comps/basicImages.json";
+import baseUrl from "./utils/baseUrl.json"
 
 function App() {
 
-  const selectedImages = basicImages.sort(() => 0.5 - Math.random()).slice(0,20);
-  
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
 
+
+  //authorization
+  //const [ loggedInUserId, setLoggedInUserId ] = useState(null)
+  const [ page, setPage ] = useState("landing")  //1.landing (register,login) - 2.guest (only searching) - 3.usersearch - 4.favourites 
+  const [ posts, setPosts ] = useState(null)
+  const [ email, setEmail ] = useState("")
+  const [ password, setPassword ] = useState("")
+  const [ content, setContent ] = useState("")
+
+
+
+
+  const selectedImages = basicImages.sort(() => 0.5 - Math.random()).slice(0,20);
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [imgList, setImgList] = useState(selectedImages)
   // {
   //   "id": 459110,
@@ -68,17 +80,21 @@ function App() {
 
 
   return (
-    isLoggedIn ? (
-      <main className='main-page'>
-        <Nav setIsLoggedIn={setIsLoggedIn} loadObjectIDs={loadObjectIDs} />
-        <CardWrapper loadObjectIDs={loadObjectIDs} loadingImgs={loadingImgs} imgList={imgList} />
-        <Footer />
-      </main>
-    ) : (
-      <main className='login-page'>
-        <Login setIsLoggedIn={setIsLoggedIn} />
-      </main>
-    )
+    <div className="App">
+      {(page === "guest") && (
+        <main className='main-page'>
+          <Nav setPage={setPage} loadObjectIDs={loadObjectIDs} />
+          <CardWrapper loadObjectIDs={loadObjectIDs} loadingImgs={loadingImgs} imgList={imgList} />
+          <Footer />
+        </main>
+      )} 
+      {(page === "landing") && (
+        <main className='login-page'>
+          <Login setPage={setPage} email={email} setEmail={setEmail} password={password} setPassword={setPassword} />
+        </main>
+      )}
+    
+  </div>
   )
 }
 
