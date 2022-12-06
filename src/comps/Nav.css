@@ -1,19 +1,79 @@
 nav {
-    padding: 1em;
-    background-color: rgba(240, 248, 255, .7);
+    padding: 0.5em 1em;
+    background-color: rgba(255, 255, 255, 1);
     position: sticky;
     top: 0;
-    width: 100%;
+    width: 100vw;
     backdrop-filter: blur(5px);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    animation: hidenav 0.15s 2s linear forwards;
+    border-bottom: 0.35rem solid rgba(40, 40, 40, 1);
+
 }
 
-.nav-link {
+nav h1 {
+    color: black;
+    border: 0.15rem solid rgba(40, 40, 40, 1);
+    padding: 1rem;
+}
+
+nav:hover {
+    animation: shownav 0.15s linear forwards;
+
+}
+
+@keyframes hidenav {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes shownav {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.logout {
+    font-weight: bold;
+    background-color: #00e5ff;
+    padding: 1rem;
+    border: none;
+    border-radius: 0.35rem;
+    font-size: 1.1rem;
+}
+
+.logout:hover {
+    filter: brightness(90%);
     cursor: pointer;
+    color: #ffffff;
 }
 
-.nav-link:hover {
-    text-decoration: underline;
+#nav-user-section {
+    display: flex;
+    gap: 2rem;
+    font-size: 1.5rem;
+    align-items: center;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 1000px) { 
+
+    nav {
+        justify-content: center;
+        opacity: 1;
+        animation: shownav 0.15s linear forwards;
+    }
+
+    
 }

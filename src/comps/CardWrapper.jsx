@@ -4,12 +4,13 @@ import "./CardWrapper.css";
 
 function CardWrapper({ loadingImgs, imgList }) {
   return loadingImgs ? (
-    <>
+    <div id="loadingContainer">
       <h1>Loading results...</h1>
       <LoadingSpinner />
-    </>
+    </div>
   ) : (
     <main>
+      <div id="#home"></div>
       {imgList.length ? (
         <ul>
           {imgList.map((imgObj) => (

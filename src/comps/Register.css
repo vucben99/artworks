@@ -8,7 +8,7 @@
     gap: 1.5rem;
     box-shadow: 0px 0px 2rem rgba(40, 40, 40, 0.75);
     opacity: 0;
-    animation: popup 0.35s 0.15s linear forwards;
+    animation: popup 0.35s linear forwards;
 }
 
 .login-box h2 {
@@ -67,11 +67,3 @@
     cursor: pointer;
     color: #ffffff;
 }
-
-@media only screen and (max-width: 1000px) {
-    
-    .login-box {
-        min-width: 100px !important;
-    }
-    
- }

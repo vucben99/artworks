@@ -1,14 +1,13 @@
-import "./Login.css";
+import "./Register.css";
 // import Button from '@mui/material/Button'
 import TextField from "@mui/material/TextField";
 import register from "../utils/register.js";
-import login from "../utils/login.js";
 
-function Login({ setPage, email, setEmail, password, setPassword }) {
+function Register({ setPage, email, setEmail, password, setPassword }) {
   return (
     <>
       <form className="login-box">
-        <h2>Login</h2>
+        <h2>Registration</h2>
         <TextField
           id="outlined-basic"
           label="Email"
@@ -28,13 +27,13 @@ function Login({ setPage, email, setEmail, password, setPassword }) {
           {/* // ! Ideiglenesen gombra kattintva átirányít a guest-re!!!! !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */}
           <button
             className="login-button"
-            onClick={() => login(email, password)(setPage("guest"))}
+            onClick={() => register(email, password)(setPage("guest"))}
           >
-            Login
+            Create Account
           </button>
           <hr />
           <span>
-            Or if you don't have an account yet, <span onClick={() => setPage("register")}>register here.</span>
+            Or if you already have an account, <span onClick={() => setPage("login")}>login here.</span>
           </span>
           {/* <Button variant="contained" onClick={()=> login(email,password)}>Login</Button>
                 <Button variant="contained" onClick={()=> register(email,password)}>Register</Button>
@@ -45,4 +44,4 @@ function Login({ setPage, email, setEmail, password, setPassword }) {
   );
 }
 
-export default Login;
+export default Register;
