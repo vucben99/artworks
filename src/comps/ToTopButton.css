@@ -5,11 +5,12 @@
     bottom: 2.5rem;
     font-size: 3.5rem;
     animation: toTopAnim 3s linear infinite;
+    z-index: 999;
 }
 
 #toTopContainer:hover {
     cursor: pointer;
-    filter: brightness(80%);
+    filter: brightness(110%);
 }
 
 @keyframes toTopAnim {

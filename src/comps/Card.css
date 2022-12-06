@@ -8,7 +8,7 @@ li {
     border-radius: 10px;
     background-image: linear-gradient(45deg, #fdfbfbac 0%, #ebedee21 100%);
     width: 80vw;
-
+    color: rgba(40, 40, 40, 1);
     
 }
 
@@ -27,6 +27,7 @@ li img {
     align-items: center;
     gap: 10px;
     max-width: 95%;
+    font-weight: 500;
 }
 
 p {
@@ -57,7 +58,7 @@ p {
 .image-section {
     display: flex;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.753);
+    background-image: linear-gradient(to bottom right, rgba(48, 207, 208, .5) 0%, rgba(51, 8, 103, .1) 100%);
     border-radius: 10px;
     padding: 5% 0;
 }
@@ -69,10 +70,11 @@ p {
 .downloadIcon {
     margin-top: 0.5rem;
     font-size: 1.3rem;
-    background-color: rgba(40, 40, 40, 0.783);
+    background-color: #f7d7489d;
+    color: rgba(40, 40, 40, 1);
     padding: .25em 0.5em;
     border-radius: 0.5rem;
-    color: #ffffff;
+    font-weight: 600;
     text-decoration: none;
     display: flex;
     justify-content: center;

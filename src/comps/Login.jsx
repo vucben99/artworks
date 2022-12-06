@@ -9,6 +9,7 @@ function Login({ setPage, email, setEmail, password, setPassword }) {
     <>
       <form className="login-box">
         <h1 className="login-logo">Bozkov Art Magazine</h1>
+        <hr />
         <h2>Login</h2>
         <div className="login-inputs">
           <TextField

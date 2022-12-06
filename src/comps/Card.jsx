@@ -50,7 +50,7 @@ function Card({ imgObj }) {
           ) : (
             <AiFillHeart
               className="heart-icon"
-              fill="#ff002f"
+              fill="#d645d4"
               onClick={() => setIsFav(!isFav)}
             />
           )}

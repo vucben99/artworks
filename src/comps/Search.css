@@ -5,5 +5,17 @@
 }
 
 .search-box button {
-    font-size: 1rem;
+    font-weight: bold;
+    background-color: #20c7d981;
+    padding: 1rem;
+    border: none;
+    border-radius: 0.35rem;
+    font-size: 1.1rem;
+    color: black;
+}
+
+.search-box button:hover {
+    filter: brightness(80%);
+    cursor: pointer;
+    color: #ffffff;
 }

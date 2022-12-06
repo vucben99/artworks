@@ -5,7 +5,7 @@ import { BsFillArrowUpCircleFill } from "react-icons/bs";
 const ToTopButton = () => {
     return (
         <div id="toTopContainer">
-            <BsFillArrowUpCircleFill className="toTopButton" fill="#00e5ff" onClick={() => (window.location.href = "#")} />
+            <BsFillArrowUpCircleFill className="toTopButton" fill="#73becd" onClick={() => (window.location.href = "#")} />
         </div>
     )
 }
