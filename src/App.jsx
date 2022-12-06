@@ -78,13 +78,19 @@ function App() {
     <div className="App">
       {page === "guest" && (
         <main className="main-page">
-          <Nav setPage={setPage} loadObjectIDs={loadObjectIDs} />
+          <Nav
+            setPage={setPage}
+            loadObjectIDs={loadObjectIDs}
+            email={email}
+            setEmail={setEmail}
+            setPassword={setPassword}
+          />
           <CardWrapper
             loadObjectIDs={loadObjectIDs}
             loadingImgs={loadingImgs}
             imgList={imgList}
           />
-          <ToTopButton/>
+          <ToTopButton />
           <Footer />
         </main>
       )}

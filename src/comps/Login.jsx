@@ -28,17 +28,36 @@ function Login({ setPage, email, setEmail, password, setPassword }) {
           {/* // ! Ideiglenesen gombra kattintva átirányít a guest-re!!!! !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */}
           <button
             className="login-button"
-            onClick={() => login(email, password)(setPage("guest"))}
+            onClick={() => {
+              const bozkovToken = login(email, password);
+              if (!bozkovToken) {
+                setPage("login");
+              } else {
+                setPage("guest");
+              }
+            }}
           >
             Login
           </button>
           <hr />
           <span>
-            Or if you don't have an account yet, <span onClick={() => setPage("register")}>register here.</span>
+            Or if you don't have an account yet,{" "}
+            <span onClick={() => setPage("register")}>register here.</span>
+          </span>
+          <span>
+            Or if you would like to view the site without registration,{" "}
+            <span
+              onClick={() => {
+                setEmail("");
+                setPage("guest");
+              }}
+            >
+              login as a guest.
+            </span>
           </span>
           {/* <Button variant="contained" onClick={()=> login(email,password)}>Login</Button>
-                <Button variant="contained" onClick={()=> register(email,password)}>Register</Button>
-                <Button variant="contained" onClick={() => setPage("guest")}>Guest</Button> */}
+          <Button variant="contained" onClick={()=> register(email,password)}>Register</Button>
+          <Button variant="contained" onClick={() => setPage("guest")}>Guest</Button> */}
         </div>
       </form>
     </>

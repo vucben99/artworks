@@ -1,7 +1,13 @@
 import "./Nav.css";
 import Search from "./Search";
 
-function Nav({ setPage, loadObjectIDs }) {
+function Nav({
+  email,
+  setEmail,
+  setPassword,
+  setPage,
+  loadObjectIDs,
+}) {
   return (
     <nav id="navbar">
       <h1>Bozkov Art Magazine</h1>
@@ -9,8 +15,15 @@ function Nav({ setPage, loadObjectIDs }) {
         <Search loadObjectIDs={loadObjectIDs} />
       </div>
       <div id="nav-user-section" className="desktop">
-        <span>Username</span>
-        <button className="logout" onClick={() => setPage("login")}>
+        <span>{email ? email : "Guest"}</span>
+        <button
+          className="logout"
+          onClick={() => {
+            setPage("login");
+            setEmail("")
+            setPassword("")
+          }}
+        >
           Logout
         </button>
       </div>
