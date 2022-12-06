@@ -1,5 +1,6 @@
 import "./Nav.css";
 import Search from "./Search";
+import { useState, useEffect } from 'react';
 
 function Nav({
   email,
@@ -8,6 +9,30 @@ function Nav({
   setPage,
   loadObjectIDs,
 }) {
+
+  const [yOffset, setYOffset] = useState(window.pageYOffset)
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  })
+
+  const handleScroll = () => {
+    const currentYOffset = window.pageYOffset
+    const visible = yOffset < currentYOffset
+    const navbar = document.querySelector("nav")
+
+    setYOffset(currentYOffset);
+
+    if (currentYOffset < 50) {
+      navbar.style.transform = "translateY(0vh)"
+    } else {
+      visible
+        ? (navbar.style.transform = "translateY(-15vh)")
+        : (navbar.style.transform = "translateY(0vh)")
+    }
+  }
+
   return (
     <nav id="navbar">
       <h1>Bozkov Art Magazine</h1>
