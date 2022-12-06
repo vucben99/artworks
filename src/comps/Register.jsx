@@ -1,4 +1,4 @@
-import "./Register.css";
+import "./Login.css";
 // import Button from '@mui/material/Button'
 import TextField from "@mui/material/TextField";
 import register from "../utils/register.js";
@@ -39,7 +39,7 @@ function Register({ setPage, email, setEmail, password, setPassword }) {
           <button
             className="login-button"
             onClick={() => {
-              if (password!==passwordAgain) {
+              if (password !== passwordAgain) {
                 alert("Passwords are different...")
               } else {
                 register(email, password);

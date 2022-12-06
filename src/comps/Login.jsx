@@ -8,22 +8,25 @@ function Login({ setPage, email, setEmail, password, setPassword }) {
   return (
     <>
       <form className="login-box">
+        <h1 className="login-logo">Bozkov Art Magazine</h1>
         <h2>Login</h2>
-        <TextField
-          id="outlined-basic"
-          label="Email"
-          variant="outlined"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <TextField
-          id="outlined-basic"
-          label="Password"
-          variant="outlined"
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <div className="login-inputs">
+          <TextField
+            id="outlined-basic"
+            label="Email"
+            variant="outlined"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <TextField
+            id="outlined-basic"
+            label="Password"
+            variant="outlined"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
         <div className="login-button-section">
           {/* // ! Ideiglenesen gombra kattintva átirányít a guest-re!!!! !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */}
           <button
