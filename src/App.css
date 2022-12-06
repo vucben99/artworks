@@ -1,22 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
 
 :root {
-    --main-grad: linear-gradient(
-        120deg,
-        hsl(60deg 100% 50%) 0%,
-        hsl(55deg 93% 63%) 9%,
-        hsl(48deg 83% 67%) 18%,
-        hsl(38deg 69% 70%) 27%,
-        hsl(21deg 53% 71%) 36%,
-        hsl(348deg 39% 70%) 45%,
-        hsl(315deg 35% 63%) 55%,
-        hsl(289deg 42% 59%) 64%,
-        hsl(275deg 58% 58%) 73%,
-        hsl(266deg 73% 56%) 82%,
-        hsl(257deg 87% 55%) 91%,
-        hsl(240deg 100% 50%) 100%
-    );
-    --bg-grad: linear-gradient(to bottom right, #30cfd0 0%, #330867 100%);
+    --main-grad: #023047;
+    --bg-color: linear-gradient(to bottom right, #30cfd0 0%, #330867 100%);
 }
 
 *,
@@ -33,7 +19,7 @@
 body {
     position: relative;
     font-family: 'Roboto', sans-serif;
-    background: var(--bg-grad);
+    background: var(--bg-color) no-repeat;
 }
 
 a {
@@ -46,14 +32,13 @@ a {
     align-items: center;
     margin: 0;
     padding: 0;
+    min-height: 100vh;
 }
 
 .login-page {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
-    width: 100%;
 }
 
 .main-page {

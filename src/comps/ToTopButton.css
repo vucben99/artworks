@@ -2,8 +2,8 @@
 #toTopContainer {
     position: fixed;
     right: 2.5rem;
-    bottom: 5rem;
-    font-size: 5rem;
+    bottom: 2.5rem;
+    font-size: 3.5rem;
     animation: toTopAnim 3s linear infinite;
 }
 

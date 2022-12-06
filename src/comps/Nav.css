@@ -3,11 +3,12 @@
 
 nav {
     padding: 0.5em 1em;
-    background-image: var(--main-grad);
+    background-image: linear-gradient(-120deg, #fdfbfb96 0%, #ebedee21 70%);
     position: fixed;
     top: 0;
     width: 100vw;
-    /* backdrop-filter: blur(5px); */
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px 1px rgba(42, 42, 42, 0.587);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -15,7 +16,7 @@ nav {
 }
 
 nav h1 {
-    color: black;
+    color: rgb(18, 18, 18);
     border: 0.15rem solid rgba(40, 40, 40, 1);
     padding: 1rem;
     font-family: 'Satisfy', sans-serif;
@@ -43,7 +44,7 @@ nav h1 {
 
 .logout {
     font-weight: bold;
-    background-color: #00e5ff;
+    background-color: #20c7d981;
     padding: 1rem;
     border: none;
     border-radius: 0.35rem;
@@ -51,7 +52,7 @@ nav h1 {
 }
 
 .logout:hover {
-    filter: brightness(90%);
+    filter: brightness(80%);
     cursor: pointer;
     color: #ffffff;
 }

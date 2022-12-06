@@ -30,19 +30,19 @@ function Card({ imgObj }) {
 
   return (
     <li>
-     <div className="image-section">
-     <img
-        src={imgObj.url.replace("original", "web-large")}
-        alt={imgObj.title}
+      <div className="image-section">
+        <img
+          src={imgObj.url.replace("original", "web-large")}
+          alt={imgObj.title}
         // onClick={downloadImg(imgObj.url)}
-      />
-     </div>
+        />
+      </div>
       <div className="card-text">
         <h2>
           {imgObj.title}
         </h2>
         <div className="favLine">
-        {!isFav ? (
+          {!isFav ? (
             <AiOutlineHeart
               className="heart-icon"
               onClick={() => setIsFav(!isFav)}
@@ -58,19 +58,19 @@ function Card({ imgObj }) {
         <p><span className="category">Artist:</span> {imgObj.artist}</p>
         <p><span className="category">Date:</span> {imgObj.date}</p>
         <p>
-        <span className="category">More info:</span> <span onClick={() => window.location.href = imgObj.description} className="redirect">Click here!</span>
+          <span className="category">More info:</span> <span onClick={() => window.location.href = imgObj.description} className="redirect">Click here!</span>
         </p>
         <div className="downloadSection">
-        <p>
-          <a
-            href={imgObj.url}
-            target="_blank"
-            download
-            onClick={(e) => download(e)}
-          >
-            <span className="downloadIcon">Download <AiOutlineDownload/></span>
-          </a>
-        </p>
+          <p>
+            <a
+              href={imgObj.url}
+              target="_blank"
+              download
+              onClick={(e) => download(e)}
+            >
+              <span className="downloadIcon">Download <AiOutlineDownload /></span>
+            </a>
+          </p>
         </div>
       </div>
     </li>
