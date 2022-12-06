@@ -105,3 +105,12 @@ p {
         align-self: center;
     }
 }
+
+@keyframes img-anim {
+    from {
+        transform: translate(100%);
+    }
+    to {
+        transform: translate(150%);
+    }
+}

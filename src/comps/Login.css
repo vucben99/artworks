@@ -69,7 +69,9 @@
 }
 
 h1.login-logo {
-    color: rgb(18, 18, 18);
+    color: rgba(34, 34, 34, 0.912);
+    border: 0.15rem solid rgba(42, 42, 42, 0.865);
+    border-radius: 5px;
     padding: 1rem;
     font-family: 'Satisfy', sans-serif;
     align-self: center;
