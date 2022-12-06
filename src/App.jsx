@@ -13,7 +13,7 @@ import ToTopButton from "./comps/ToTopButton";
 function App() {
   //authorization
   //const [ loggedInUserId, setLoggedInUserId ] = useState(null)
-  const [page, setPage] = useState("login"); //1.landing (register,login) - 2.guest (only searching) - 3.usersearch - 4.favourites
+  const [page, setPage] = useState("login"); //1.landing (register,login) - 2.guest (only searching) - 3.userSearch - 4.favourites - 5. formdata
   const [posts, setPosts] = useState(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -57,7 +57,6 @@ function App() {
 
     const objectIDs = res.data.objectIDs;
 
-    // let imgObjArr = []
     for (const index in objectIDs) {
       const id = objectIDs[index];
       const imgObj = await makeImgObj(id);
@@ -65,13 +64,10 @@ function App() {
         continue;
       }
       console.log(imgObj);
-      // imgObjArr.push(imgObj)
       setImgList((prev) => [...prev, imgObj]);
       setLoadingImgs(false);
       // if (Number(index) >= 10) break
     }
-    // setImgList(imgObjArr)
-    // console.log(imgObjArr)npm run dev
   };
 
   return (
@@ -94,6 +90,43 @@ function App() {
           <Footer />
         </main>
       )}
+      
+      {//belépett user ide kerül:
+      page === "userSearch" && (
+        <main className="main-page">
+          <Nav
+            setPage={setPage}
+            loadObjectIDs={loadObjectIDs}
+            email={email}
+            setEmail={setEmail}
+            setPassword={setPassword}
+          />
+          <CardWrapper
+            loadObjectIDs={loadObjectIDs}
+            loadingImgs={loadingImgs}
+            imgList={imgList}
+          />
+          <ToTopButton />
+          <Footer />
+        </main>
+      )}
+
+      {//belépett user itt tölti fel a kedvenc képét:
+      page === "formdata" && (
+        <main className="main-page">
+          <Nav
+            setPage={setPage}
+            loadObjectIDs={loadObjectIDs}
+            email={email}
+            setEmail={setEmail}
+            setPassword={setPassword}
+          />
+          <ImageForm />
+          <ToTopButton />
+          <Footer />
+        </main>
+      )}
+
       {page === "login" && (
         <main className="login-page">
           <Login
@@ -105,6 +138,7 @@ function App() {
           />
         </main>
       )}
+
       {page === "register" && (
         <main className="register">
           <Register

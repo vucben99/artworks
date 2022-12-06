@@ -3,9 +3,11 @@ import "./Login.css";
 import TextField from "@mui/material/TextField";
 import register from "../utils/register.js";
 import { useState } from "react";
+import checkPassword from "../utils/checkPassword.js";
+import validateEmail from "../utils/validateEmail.js";
 
 function Register({ setPage, email, setEmail, password, setPassword }) {
-  const [passwordAgain, setPasswordAgain] = useState("")
+  const [passwordAgain, setPasswordAgain] = useState("");
 
   return (
     <>
@@ -40,10 +42,18 @@ function Register({ setPage, email, setEmail, password, setPassword }) {
             className="login-button"
             onClick={() => {
               if (password !== passwordAgain) {
-                alert("Passwords are different...")
+                alert("Passwords are different...");
+              } else if (!checkPassword(password)) {
+                alert(
+                  "The password should be at least 8 characters long and \n contain an uppercase letter and a number."
+                );
+              } else if (!validateEmail) {
+                alert(
+                  "This is not a valid email format."
+                )
               } else {
                 register(email, password);
-                setPage("guest");
+                setPage("userSearch");
               }
             }}
           >
@@ -54,9 +64,17 @@ function Register({ setPage, email, setEmail, password, setPassword }) {
             Or if you already have an account,{" "}
             <span onClick={() => setPage("login")}>login here.</span>
           </span>
-          {/* <Button variant="contained" onClick={()=> login(email,password)}>Login</Button>
-                <Button variant="contained" onClick={()=> register(email,password)}>Register</Button>
-                <Button variant="contained" onClick={() => setPage("guest")}>Guest</Button> */}
+          <span>
+            Or if you would like to view the site without registration,{" "}
+            <span
+              onClick={() => {
+                setEmail("");
+                setPage("guest");
+              }}
+            >
+              login as a guest.
+            </span>
+          </span>
         </div>
       </form>
     </>

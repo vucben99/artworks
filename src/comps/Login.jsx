@@ -33,11 +33,11 @@ function Login({ setPage, email, setEmail, password, setPassword }) {
           <button
             className="login-button"
             onClick={() => {
-              const bozkovToken = login(email, password);
+              const bozkovToken = login(email, password, setPage);
               if (!bozkovToken) {
                 setPage("login");
               } else {
-                setPage("guest");
+                setPage("userSearch");
               }
             }}
           >
@@ -59,9 +59,6 @@ function Login({ setPage, email, setEmail, password, setPassword }) {
               login as a guest.
             </span>
           </span>
-          {/* <Button variant="contained" onClick={()=> login(email,password)}>Login</Button>
-          <Button variant="contained" onClick={()=> register(email,password)}>Register</Button>
-          <Button variant="contained" onClick={() => setPage("guest")}>Guest</Button> */}
         </div>
       </form>
     </>
