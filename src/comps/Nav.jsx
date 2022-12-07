@@ -40,6 +40,7 @@ function Nav({
         <Search loadObjectIDs={loadObjectIDs} />
       </div>
       <div id="nav-user-section" className="desktop">
+        <span onClick={()=>{}}>Favourite images</span> {/*innen ugrunk a page favourite-re*/} 
         <span>{email ? email : "Guest"}</span>
         <button
           className="logout"

@@ -7,9 +7,9 @@ function ImageForm({imgObj}) {
             title <br/>
             artist <br/>
             date <br/>
-            more info <br/>
-            <input type="text" placeholder="comments"/> <br/>
-            <input type="file" /> <br/>
+            more info url<br/>
+            <input type="text" placeholder="tags"/> <br/>
+            
             <button type="submit">Save as favourite image</button>
         </section>
     )
