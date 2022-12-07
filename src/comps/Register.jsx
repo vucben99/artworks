@@ -25,7 +25,7 @@ function Register({ setPage, email, setEmail, password, setPassword }) {
           id="outlined-basic"
           label="Email"
           variant="outlined"
-          autocomplete="off"
+          autoComplete="off"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
@@ -34,7 +34,7 @@ function Register({ setPage, email, setEmail, password, setPassword }) {
           label="Password"
           variant="outlined"
           type="password"
-          autocomplete="off"
+          autoComplete="off"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
@@ -43,7 +43,7 @@ function Register({ setPage, email, setEmail, password, setPassword }) {
           label="Password again"
           variant="outlined"
           type="password"
-          autocomplete="off"
+          autoComplete="off"
           value={passwordAgain}
           onChange={(e) => setPasswordAgain(e.target.value)}
         />
@@ -66,11 +66,11 @@ function Register({ setPage, email, setEmail, password, setPassword }) {
                 setEmailValid("This is not a valid email format.")
               } else {
                 register(email, password)
-                setEmail("")
-                setPassword("")
-                setPasswordAgain("")
-                setPwAtleast8("")
-                setPwDiff("")
+                // setEmail("")
+                // setPassword("")
+                // setPasswordAgain("")
+                // setPwAtleast8("")
+                // setPwDiff("")
                 setRegSuccess("Registered successfully! Now you can log in.")
               }
             }}
