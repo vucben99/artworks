@@ -77,7 +77,7 @@ function App() {
           <Nav
             setPage={setPage}
             loadObjectIDs={loadObjectIDs}
-            email={email}
+            email={"Guest"}
             setEmail={setEmail}
             setPassword={setPassword}
           />

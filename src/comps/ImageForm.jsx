@@ -1,13 +1,14 @@
 import './ImageForm.css'
 
-function ImageForm() {
+function ImageForm({imgObj}) {
+    
     return (
-        <section>
+        <section className='imageForm'>
             title <br/>
             artist <br/>
             date <br/>
             more info <br/>
-            <input type="text" placeholder="tags with commas"/> <br/>
+            <input type="text" placeholder="comments"/> <br/>
             <input type="file" /> <br/>
             <button type="submit">Save as favourite image</button>
         </section>

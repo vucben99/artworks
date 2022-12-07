@@ -17,6 +17,7 @@ function Register({ setPage, email, setEmail, password, setPassword }) {
           id="outlined-basic"
           label="Email"
           variant="outlined"
+          autocomplete="off"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
@@ -25,6 +26,7 @@ function Register({ setPage, email, setEmail, password, setPassword }) {
           label="Password"
           variant="outlined"
           type="password"
+          autocomplete="off"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
@@ -33,6 +35,7 @@ function Register({ setPage, email, setEmail, password, setPassword }) {
           label="Password again"
           variant="outlined"
           type="password"
+          autocomplete="off"
           value={passwordAgain}
           onChange={(e) => setPasswordAgain(e.target.value)}
         />
@@ -42,18 +45,21 @@ function Register({ setPage, email, setEmail, password, setPassword }) {
             className="login-button"
             onClick={() => {
               if (password !== passwordAgain) {
+                setPage("register")
                 alert("Passwords are different...");
               } else if (!checkPassword(password)) {
+                setPage("register")
                 alert(
                   "The password should be at least 8 characters long and \n contain an uppercase letter and a number."
                 );
               } else if (!validateEmail) {
+                setPage("register")
                 alert(
                   "This is not a valid email format."
                 )
               } else {
                 register(email, password);
-                setPage("userSearch");
+                setPage("login");
               }
             }}
           >

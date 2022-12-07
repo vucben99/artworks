@@ -3,6 +3,7 @@ import "./Card.css";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { AiOutlineDownload } from "react-icons/ai";
 import { saveAs } from "file-saver";
+import saveFavourite from "../utils/saveFavourite.js"
 
 function Card({ imgObj }) {
   const [isFav, setIsFav] = useState(false);
@@ -45,7 +46,10 @@ function Card({ imgObj }) {
           {!isFav ? (
             <AiOutlineHeart
               className="heart-icon"
-              onClick={() => setIsFav(!isFav)}
+              onClick={() => {
+                setIsFav(!isFav)
+                saveFavourite(imgObj)
+              }}
             />
           ) : (
             <AiFillHeart
