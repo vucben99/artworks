@@ -1,17 +1,25 @@
-import "./Login.css";
+import "./Login.css"
 // import Button from '@mui/material/Button'
-import TextField from "@mui/material/TextField";
-import register from "../utils/register.js";
-import { useState } from "react";
-import checkPassword from "../utils/checkPassword.js";
-import validateEmail from "../utils/validateEmail.js";
+import TextField from "@mui/material/TextField"
+import register from "../utils/register.js"
+import { useState } from "react"
+import checkPassword from "../utils/checkPassword.js"
+import validateEmail from "../utils/validateEmail.js"
 
 function Register({ setPage, email, setEmail, password, setPassword }) {
-  const [passwordAgain, setPasswordAgain] = useState("");
+  const [passwordAgain, setPasswordAgain] = useState("")
+  const [pwDiff, setPwDiff] = useState("")
+  const [pwAtleast8, setPwAtleast8] = useState("")
+  const [emailValid, setEmailValid] = useState("")
+  const [regSuccess, setRegSuccess] = useState("")
+
+  function handleSubmit(e) {
+    e.preventDefault()
+  }
 
   return (
     <>
-      <form className="login-box">
+      <form className="login-box" onSubmit={(e) => handleSubmit(e)}>
         <h2>Registration</h2>
         <TextField
           id="outlined-basic"
@@ -39,27 +47,31 @@ function Register({ setPage, email, setEmail, password, setPassword }) {
           value={passwordAgain}
           onChange={(e) => setPasswordAgain(e.target.value)}
         />
+        <p className="pwDiff">{pwDiff}</p>
+        <p className="pwDiff">{pwAtleast8}</p>
+        <p className="pwDiff">{emailValid}</p>
+        <p className="regSuccess">{regSuccess}</p>
         <div className="login-button-section">
           {/* // ! Ideiglenesen gombra kattintva átirányít a guest-re!!!! !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */}
           <button
             className="login-button"
             onClick={() => {
               if (password !== passwordAgain) {
-                setPage("register")
-                alert("Passwords are different...");
-              } else if (!checkPassword(password)) {
-                setPage("register")
-                alert(
-                  "The password should be at least 8 characters long and \n contain an uppercase letter and a number."
-                );
-              } else if (!validateEmail) {
-                setPage("register")
-                alert(
-                  "This is not a valid email format."
-                )
+                setPwDiff("Passwords do not match!")
+              }
+              if (!checkPassword(password)) {
+                setPwAtleast8("The password should be at least 8 characters long and contain an uppercase letter and a number.")
+              }
+              if (!validateEmail) {
+                setEmailValid("This is not a valid email format.")
               } else {
-                register(email, password);
-                setPage("login");
+                register(email, password)
+                setEmail("")
+                setPassword("")
+                setPasswordAgain("")
+                setPwAtleast8("")
+                setPwDiff("")
+                setRegSuccess("Registered successfully! Now you can log in.")
               }
             }}
           >
@@ -74,8 +86,8 @@ function Register({ setPage, email, setEmail, password, setPassword }) {
             Or if you would like to view the site without registration,{" "}
             <span
               onClick={() => {
-                setEmail("");
-                setPage("guest");
+                setEmail("")
+                setPage("guest")
               }}
             >
               login as a guest.
@@ -87,4 +99,4 @@ function Register({ setPage, email, setEmail, password, setPassword }) {
   );
 }
 
-export default Register;
+export default Register
