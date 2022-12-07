@@ -9,12 +9,12 @@ const login = async (email, password, setPage) => {
     localStorage.setItem("bozkovToken",response.data.accessToken)
     const bozkovToken = localStorage.getItem("bozkovToken")
     console.log(bozkovToken);
-    return response.data.accessToken
+    return response.status
   } catch (error) {
     alert("Login failed \n Incorrect email or password")
-    console.log(error)
+    console.log(error, "asddadaaddad")
     setPage("login")
-    return null
+    return response.status
   }
 }
 
