@@ -14,10 +14,9 @@ function App() {
   //authorization
   //const [ loggedInUserId, setLoggedInUserId ] = useState(null)
   const [page, setPage] = useState("login"); //1.landing (register,login) - 2.guest (only searching) - 3.userSearch - 4.favourites - 5. formdata
-  const [posts, setPosts] = useState(null);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [content, setContent] = useState("");
 
   const selectedImages = basicImages
     .sort(() => 0.5 - Math.random())
@@ -33,6 +32,29 @@ function App() {
   //   "url": "https://scontent-vie1-1.xx.fbcdn.net/v/t39.30808-6/302154227_586727176490200_5651389768103080665_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=Z8xutsXKa6oAX_FZorS&_nc_ht=scontent-vie1-1.xx&oh=00_AfDoZlh666k4mN79kRavKnDxLh9Zj5Fj_NChIgLNLzB-nw&oe=638EBBCE"
   // }
   const [loadingImgs, setLoadingImgs] = useState(false);
+
+  const [favouriteImgList, setFavouriteImgList] = useState([]);
+
+  const loadFavouriteArr = () => {
+    const bozkovToken = localStorage.getItem("bozkovToken");
+
+    let myHeaders = new Headers();
+    myHeaders.append("Authorization", "Bearer " + bozkovToken);
+
+    let requestOptions = {
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow",
+    };
+
+    fetch(baseUrl + "api/artwork", requestOptions)
+      .then((response) => {
+        response.text();
+        setFavouriteImgList(response);
+      })
+      .then((result) => console.log(result))
+      .catch((error) => console.log("error", error));
+  };
 
   const makeImgObj = async (id) => {
     const res = await axios.get(
@@ -85,47 +107,75 @@ function App() {
             loadObjectIDs={loadObjectIDs}
             loadingImgs={loadingImgs}
             imgList={imgList}
-          />
-          <ToTopButton />
-          <Footer />
-        </main>
-      )}
-      
-      {//belépett user ide kerül:
-      page === "userSearch" && (
-        <main className="main-page">
-          <Nav
-            setPage={setPage}
-            loadObjectIDs={loadObjectIDs}
-            email={email}
-            setEmail={setEmail}
-            setPassword={setPassword}
-          />
-          <CardWrapper
-            loadObjectIDs={loadObjectIDs}
-            loadingImgs={loadingImgs}
-            imgList={imgList}
+            favouriteImgList={favouriteImgList} //ellenőrizni kell, hogy a keresési találatok között van-e már elmentett kedvenc!
           />
           <ToTopButton />
           <Footer />
         </main>
       )}
 
-      {//belépett user itt tölti fel a kedvenc képét:
-      page === "formdata" && (
-        <main className="main-page">
-          <Nav
-            setPage={setPage}
-            loadObjectIDs={loadObjectIDs}
-            email={email}
-            setEmail={setEmail}
-            setPassword={setPassword}
-          />
-          <ImageForm />
-          <ToTopButton />
-          <Footer />
-        </main>
-      )}
+      {
+        //belépett user ide kerül:
+        page === "userSearch" && (
+          <main className="main-page">
+            <Nav
+              setPage={setPage}
+              loadObjectIDs={loadObjectIDs}
+              email={email}
+              setEmail={setEmail}
+              setPassword={setPassword}
+            />
+            <CardWrapper
+              loadObjectIDs={loadObjectIDs}
+              loadingImgs={loadingImgs}
+              imgList={imgList}
+            />
+            <ToTopButton />
+            <Footer />
+          </main>
+        )
+      }
+
+      {
+        //belépett user itt tölti fel a kedvenc képét:
+        page === "formdata" && (
+          <main className="main-page">
+            <Nav
+              setPage={setPage}
+              loadObjectIDs={loadObjectIDs}
+              email={email}
+              setEmail={setEmail}
+              setPassword={setPassword}
+            />
+            <ImageForm />
+            <ToTopButton />
+            <Footer />
+          </main>
+        )
+      }
+
+      {
+        //favourite page here
+        page === "favourite" && (
+          <main className="main-page">
+            <Nav
+              setPage={setPage}
+              loadObjectIDs={loadObjectIDs}
+              email={email}
+              setEmail={setEmail}
+              setPassword={setPassword}
+            />
+            <CardFavouriteWrapper
+              favouriteImgList={favouriteImgList}
+              // loadObjectIDs={loadObjectIDs}
+              loadingImgs={loadingImgs}
+              // imgList={imgList}
+            />
+            <ToTopButton />
+            <Footer />
+          </main>
+        )
+      }
 
       {page === "login" && (
         <main className="login-page">
