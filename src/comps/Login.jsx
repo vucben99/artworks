@@ -33,11 +33,15 @@ function Login({ setPage, email, setEmail, password, setPassword }) {
           <button
             className="login-button"
             onClick={() => {
-              const bozkovToken = login(email, password, setPage);
-              if (!bozkovToken) {
+              const status = login(email, password, setPage)
+              alert(status)
+              console.log("Status ==> ", status)
+              if (status >= 400) {
                 setPage("login");
+                console.log("Status ==> ", status)
               } else {
                 setPage("userSearch");
+                console.log("Status ==> ", status)
               }
             }}
           >
