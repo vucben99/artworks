@@ -9,7 +9,7 @@ const saveFavourite = async (imgObj) => {
     artist: imgObj.artist,
     date: imgObj.date,
     moreInfoUrl: imgObj.description,
-    tags: "",
+    tags: [],
   };
 
   //ide jön a bolb és a logikája
@@ -39,25 +39,25 @@ const saveFavourite = async (imgObj) => {
   //   body: formdata
   // })
 
-  var myHeaders = new Headers();
+  let myHeaders = new Headers();
   myHeaders.append(
     "Authorization",
-    "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrYWxsb3NAa2FtdS5odSIsInJvbGVzIjpbIlVTRVIiXSwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDkxL2FwaS9sb2dpbiIsImV4cCI6MTY3MDUwNTY0Mn0.ioZjWGQLGFnzmUewkLeV3XAvp3KVILJ1iL4j4pSWEao"
+    "Bearer "+bozkovToken
   );
 
-  var formdata = new FormData();
+  let formdata = new FormData();
   formdata.append("file", imgFile);
   formdata.append("title", title);
   formdata.append("description", description);
 
-  var requestOptions = {
+  let requestOptions = {
     method: "POST",
     headers: myHeaders,
     body: formdata,
     redirect: "follow",
   };
 
-  fetch("http://localhost:8091/api/artwork", requestOptions)
+  fetch(baseUrl+"api/artwork", requestOptions)
     .then((response) => response.text())
     .then((result) => console.log(result))
     .catch((error) => console.log("error", error));
