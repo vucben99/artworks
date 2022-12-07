@@ -28,7 +28,7 @@ function Nav({
       navbar.style.transform = "translateY(0vh)"
     } else {
       visible
-        ? (navbar.style.transform = "translateY(-15vh)")
+        ? (navbar.style.transform = "translateY(-100%)")
         : (navbar.style.transform = "translateY(0vh)")
     }
   }
