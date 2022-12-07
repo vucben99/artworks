@@ -21,3 +21,4 @@
     
 7. Megnézzük a gyors és hatékony kódot:
     ```npm run preview```
+...
