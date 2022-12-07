@@ -66,12 +66,8 @@ function Register({ setPage, email, setEmail, password, setPassword }) {
                 setEmailValid("This is not a valid email format.")
               } else {
                 register(email, password)
-                // setEmail("")
-                // setPassword("")
-                // setPasswordAgain("")
-                // setPwAtleast8("")
-                // setPwDiff("")
                 setRegSuccess("Registered successfully! Now you can log in.")
+                
               }
             }}
           >
