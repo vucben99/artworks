@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import Nav from "./comps/Nav";
 import CardWrapper from "./comps/CardWrapper";
+import CardFavouriteWrapper from "./comps/CardFavouriteWrapper.jsx";
 import Login from "./comps/Login";
 import Register from "./comps/Register";
 import Footer from "./comps/Footer";
@@ -9,6 +10,7 @@ import axios from "axios";
 import basicImages from "./comps/basicImages.json";
 import baseUrl from "./utils/baseUrl.json";
 import ToTopButton from "./comps/ToTopButton";
+import loadFavouriteArr from "./utils/loadFavouriteArr.js";
 
 function App() {
   //authorization
@@ -35,26 +37,18 @@ function App() {
 
   const [favouriteImgList, setFavouriteImgList] = useState([]);
 
-  const loadFavouriteArr = () => {
-    const bozkovToken = localStorage.getItem("bozkovToken");
-
-    let myHeaders = new Headers();
-    myHeaders.append("Authorization", "Bearer " + bozkovToken);
-
-    let requestOptions = {
-      method: "GET",
-      headers: myHeaders,
-      redirect: "follow",
-    };
-
-    fetch(baseUrl + "api/artwork", requestOptions)
-      .then((response) => {
-        response.text();
-        setFavouriteImgList(response);
-      })
-      .then((result) => console.log(result))
-      .catch((error) => console.log("error", error));
+  const init = async () => {
+    await setFavouriteImgList(await loadFavouriteArr());
+    await console.log(favouriteImgList);
   };
+
+  useEffect(() => {
+    init();
+  }, [email]);
+
+  useEffect(() => {
+    setFavouriteImgList(localStorage.getItem("favouriteImgList"));
+  }, [localStorage.getItem("favouriteImgList")]);
 
   const makeImgObj = async (id) => {
     const res = await axios.get(
@@ -165,12 +159,12 @@ function App() {
               setEmail={setEmail}
               setPassword={setPassword}
             />
-            <CardFavouriteWrapper
-              favouriteImgList={favouriteImgList}
-              // loadObjectIDs={loadObjectIDs}
-              loadingImgs={loadingImgs}
-              // imgList={imgList}
-            />
+            <ul>
+              {favouriteImgList.map((favouriteObj)=>{
+                <h1>favouriteObj</h1>
+                console.log(favouriteObj)
+              })}
+            </ul>
             <ToTopButton />
             <Footer />
           </main>
