@@ -3,7 +3,7 @@ import axios from "axios";
 
 const loadFavouriteArr = async () => {
   const bozkovToken = localStorage.getItem("bozkovToken");
-
+  console.log("itt vagyok a külső loadFav",bozkovToken)
   let config = {
     method: "get",
     url: baseUrl + "api/artwork",

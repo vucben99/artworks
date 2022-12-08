@@ -37,8 +37,9 @@ function Nav({ email, setEmail, setPassword, setPage, loadObjectIDs , setFavouri
         <span
           onClick={async () => {
             const favourites = await loadFavouriteArr()
-            setFavouriteImgList(favourites)
-            setPage("favourite");
+            console.log("itt vagyok az asszink onClickben",favourites)
+            await setFavouriteImgList(favourites)
+            await setPage("favourite");
           }}
         >
           Favourite images

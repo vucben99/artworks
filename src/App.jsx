@@ -31,7 +31,7 @@ function App() {
 
   const loadFavouriteArr = async () => {
     const bozkovToken = localStorage.getItem("bozkovToken");
-
+    console.log("App.jsx-ben a loadFavouriteben vagyok. bozkovToken:", bozkovtoken)
     let config = {
       method: "get",
       url: baseUrl + "api/artwork",
@@ -152,20 +152,20 @@ function App() {
         //favourite page here
         page === "favourite" && favouriteImgList && (
           <main className="main-page">
-            {/* <Nav
+            <Nav
               setPage={setPage}
               loadObjectIDs={loadObjectIDs}
               email={email}
               setEmail={setEmail}
               setPassword={setPassword}
               setFavouriteImgList = {setFavouriteImgList}
-            /> */}
+            />
             {console.log("itt vagyok a map/for előtt", favouriteImgList)}
             <ul>
               {favouriteImgList.map(favouriteObj => (
               <li key={favouriteObj.id}>
                 <h1>{favouriteObj.title}</h1>
-                <img src={"http://"+favouriteObj.url} alt="" />
+                <img src={favouriteObj.url.slice(0,favouriteObj.url.length-5)+"&"+localStorage.getItem("bozkovToken")} alt="" />
                 {console.log(favouriteObj)}
               </li>
               ) )}

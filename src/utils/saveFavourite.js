@@ -9,6 +9,7 @@ const saveFavourite = async (imgObj) => {
     artist: imgObj.artist,
     date: imgObj.date,
     moreInfoUrl: imgObj.description,
+    url: imgObj.url,
     tags: [],
   };
 
