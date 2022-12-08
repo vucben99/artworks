@@ -43,7 +43,7 @@ function Nav({
       </div>
       <div id="nav-user-section" className="desktop">
         {email !== "Guest" && (
-          <span
+          <span 
             onClick={async () => {
               const favourites = await loadFavouriteArr();
               console.log("itt vagyok az asszink onClickben", favourites);

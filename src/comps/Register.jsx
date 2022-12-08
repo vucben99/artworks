@@ -1,20 +1,20 @@
-import "./Login.css"
+import "./Login.css";
 // import Button from '@mui/material/Button'
-import TextField from "@mui/material/TextField"
-import register from "../utils/register.js"
-import { useState } from "react"
-import checkPassword from "../utils/checkPassword.js"
-import validateEmail from "../utils/validateEmail.js"
+import TextField from "@mui/material/TextField";
+import register from "../utils/register.js";
+import { useState } from "react";
+import checkPassword from "../utils/checkPassword.js";
+import validateEmail from "../utils/validateEmail.js";
 
 function Register({ setPage, email, setEmail, password, setPassword }) {
-  const [passwordAgain, setPasswordAgain] = useState("")
-  const [pwDiff, setPwDiff] = useState("")
-  const [pwAtleast8, setPwAtleast8] = useState("")
-  const [emailValid, setEmailValid] = useState("")
-  const [regSuccess, setRegSuccess] = useState("")
+  const [passwordAgain, setPasswordAgain] = useState("");
+  const [pwDiff, setPwDiff] = useState("");
+  const [pwAtleast8, setPwAtleast8] = useState("");
+  const [emailValid, setEmailValid] = useState("");
+  const [regSuccess, setRegSuccess] = useState("");
 
   function handleSubmit(e) {
-    e.preventDefault()
+    e.preventDefault();
   }
 
   return (
@@ -57,19 +57,24 @@ function Register({ setPage, email, setEmail, password, setPassword }) {
             className="login-button"
             onClick={() => {
               if (password !== passwordAgain) {
-                setPwDiff("Passwords do not match!")
+                setPwDiff("Passwords do not match!");
               }
               if (!checkPassword(password)) {
-                setPwAtleast8("The password should be at least 8 characters long and contain an uppercase letter and a number.")
+                setPwAtleast8(
+                  "The password should be at least 8 characters long and contain an uppercase letter and a number."
+                );
               }
               if (!validateEmail) {
-                setEmailValid("This is not a valid email format.")
+                setEmailValid("This is not a valid email format.");
               } else {
-                if ((password == passwordAgain) && (checkPassword(password)) && (validateEmail(email))) {
-                  register(email, password)
-                  setRegSuccess("Registered successfully! Now you can log in.")
+                if (
+                  password == passwordAgain &&
+                  checkPassword(password) &&
+                  validateEmail(email)
+                ) {
+                  register(email, password);
+                  setRegSuccess("Registered successfully! Now you can log in.");
                 }
-                
               }
             }}
           >
@@ -84,8 +89,8 @@ function Register({ setPage, email, setEmail, password, setPassword }) {
             Or if you would like to view the site without registration,{" "}
             <span
               onClick={() => {
-                setEmail("")
-                setPage("guest")
+                setEmail("");
+                setPage("guest");
               }}
             >
               login as a guest.
@@ -97,4 +102,4 @@ function Register({ setPage, email, setEmail, password, setPassword }) {
   );
 }
 
-export default Register
+export default Register;
