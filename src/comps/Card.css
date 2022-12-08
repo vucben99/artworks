@@ -1,25 +1,42 @@
+ul {
+    width: 80vw;
+}
+
 li {
-    display: grid;
-    grid-gap: 20px;
-    grid-template-columns: 0.35fr 1fr;
+    /* display: grid; */
+    /* grid-gap: 20px; */
+    /* grid-template-columns: 0.35fr 1fr; */
+    display: flex;
     list-style: none;
+    gap: 1%;
     padding: 20px;
     box-shadow: 0 0 10px rgba(40, 40, 40, 1);
     border-radius: 10px;
     background-image: linear-gradient(45deg, #fdfbfbac 0%, #ebedee21 100%);
-    width: 80vw;
     color: rgba(40, 40, 40, 1);
-    
+    width: 100%;
 }
 
-li img {
-    max-height: 12.5rem;
+.image-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to bottom right, rgba(48, 207, 208, .5) 0%, rgba(51, 8, 103, .1) 100%);
+    border-radius: .5rem;
+    width: 30%;
+}
+
+.image-section img {
     border-radius: 0.5rem;
-    aspect-ratio: auto;
+    width: 100%;
+    object-fit: contain;
 }
 
 .card-text {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
 }
 
 .card-text h2 {
@@ -55,62 +72,52 @@ p {
     width: 100%;
 }
 
-.image-section {
-    display: flex;
-    justify-content: center;
-    background-image: linear-gradient(to bottom right, rgba(48, 207, 208, .5) 0%, rgba(51, 8, 103, .1) 100%);
-    border-radius: 10px;
-    padding: 5% 0;
-}
 
-.downloadSection {
-    max-width: 20%;
-}
-
-.downloadIcon {
-    margin-top: 0.5rem;
-    font-size: 1.3rem;
+.download-btn {
+    cursor: pointer;
     background-color: #f7d7489d;
     color: rgba(40, 40, 40, 1);
-    padding: .25em 0.5em;
+    padding: .5em 1em;
+    font-size: 1.4em;
     border-radius: 0.5rem;
-    font-weight: 600;
-    text-decoration: none;
+    max-width: fit-content;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: .5em;
 }
 
-.downloadIcon:hover {
-    text-decoration: none;
-    cursor: pointer;
+.download-btn:hover {
     filter: brightness(70%);
 }
 
 @media only screen and (max-width: 1000px) {
 
-    .downloadSection {
-        font-size: 1.5rem;
-        max-width: 100%;
-    }
-
     li {
         display: flex;
         flex-direction: column;
-        min-width: 95%;
-        max-width: 95%;
+        width: 95%;
+        gap: 1rem;
     }
-    li img {
+
+    li h2 {
+        font-size: 1.5rem;
+    }
+
+    li p {
+        font-size: 1.1rem;
+    }
+
+    .image-section {
         align-self: center;
     }
-}
 
-@keyframes img-anim {
-    from {
-        transform: translate(100%);
+    .image-section img {
+        object-fit: contain;
+        min-width: 15em;
     }
-    to {
-        transform: translate(150%);
+
+    html {
+        font-size: 14px;
     }
 }

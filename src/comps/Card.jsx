@@ -39,43 +39,43 @@ function Card({ imgObj }) {
         />
       </div>
       <div className="card-text">
-        <h2>
-          {imgObj.title}
-        </h2>
-        <div className="favLine">
-          {!isFav ? (
-            <AiOutlineHeart
-              className="heart-icon"
-              onClick={() => {
-                setIsFav(!isFav)
-                saveFavourite(imgObj)
-              }}
-            />
-          ) : (
-            <AiFillHeart
-              className="heart-icon"
-              fill="#f7d7489d"
-              onClick={() => setIsFav(!isFav)}
-            />
-          )}
-        </div>
-        <p><span className="category">Artist:</span> {imgObj.artist}</p>
-        <p><span className="category">Date:</span> {imgObj.date}</p>
-        <p>
-          <span className="category">More info:</span> <span onClick={() => window.location.href = imgObj.description} className="redirect">Click here!</span>
-        </p>
-        <div className="downloadSection">
+        <div>
+          <h2>
+            {imgObj.title}
+          </h2>
+          <div className="favLine">
+            {!isFav ? (
+              <AiOutlineHeart
+                className="heart-icon"
+                onClick={() => {
+                  setIsFav(!isFav)
+                  saveFavourite(imgObj)
+                }}
+              />
+            ) : (
+              <AiFillHeart
+                className="heart-icon"
+                fill="#f7d7489d"
+                onClick={() => setIsFav(!isFav)}
+              />
+            )}
+          </div>
+          <p><span className="category">Artist:</span> {imgObj.artist}</p>
+          <p><span className="category">Date:</span> {imgObj.date}</p>
           <p>
-            <a
-              href={imgObj.url}
-              target="_blank"
-              download
-              onClick={(e) => download(e)}
-            >
-              <span className="downloadIcon">Download <AiOutlineDownload /></span>
-            </a>
+            <span className="category">More info:</span> <span onClick={() => window.location.href = imgObj.description} className="redirect">Click here!</span>
           </p>
         </div>
+        <a
+          className="download-btn"
+          href={imgObj.url}
+          target="_blank"
+          download
+          onClick={(e) => download(e)}
+        >
+          Download
+          <AiOutlineDownload />
+        </a>
       </div>
     </li>
   );

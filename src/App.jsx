@@ -76,10 +76,8 @@ function App() {
       if (imgObj.url === "") {
         continue;
       }
-      console.log(imgObj);
       setImgList((prev) => [...prev, imgObj]);
       setLoadingImgs(false);
-      // if (Number(index) >= 10) break
     }
   };
 
