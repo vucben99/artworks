@@ -25,14 +25,7 @@ function App() {
     .slice(0, 20);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [imgList, setImgList] = useState(selectedImages);
-  // {
-  //   "id": 459110,
-  //   "title": "A sarki kisbolt",
-  //   "artist": "Terence Hill (alias Zsuga Bubus)",
-  //   "date": "2022",
-  //   "description": "https://www.facebook.com/photo/?fbid=586727183156866&set=a.586727149823536",
-  //   "url": "https://scontent-vie1-1.xx.fbcdn.net/v/t39.30808-6/302154227_586727176490200_5651389768103080665_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=Z8xutsXKa6oAX_FZorS&_nc_ht=scontent-vie1-1.xx&oh=00_AfDoZlh666k4mN79kRavKnDxLh9Zj5Fj_NChIgLNLzB-nw&oe=638EBBCE"
-  // }
+
   const [loadingImgs, setLoadingImgs] = useState(false);
 
   const [favouriteImgList, setFavouriteImgList] = useState([]);
@@ -160,10 +153,15 @@ function App() {
               setPassword={setPassword}
             />
             <ul>
-              {favouriteImgList.map((favouriteObj)=>{
-                <h1>favouriteObj</h1>
-                console.log(favouriteObj)
-              })}
+              for (const favouriteObj of favouriteImgList){" "}
+              {
+                <li key={favouriteObj.id}>
+                  {" "}
+                  <h1>{favouriteObj.title}</h1>
+                  <img src={favouriteObj.url} alt="" />
+                  {console.log(favouriteObj)}
+                </li>
+              }
             </ul>
             <ToTopButton />
             <Footer />
