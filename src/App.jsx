@@ -10,7 +10,7 @@ import axios from "axios";
 import basicImages from "./comps/basicImages.json";
 import baseUrl from "./utils/baseUrl.json";
 import ToTopButton from "./comps/ToTopButton";
-import loadFavouriteArr from "./utils/loadFavouriteArr.js";
+// import loadFavouriteArr from "./utils/loadFavouriteArr.js";
 
 function App() {
   //authorization
@@ -25,23 +25,27 @@ function App() {
     .slice(0, 20);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [imgList, setImgList] = useState(selectedImages);
+  const [favouriteImgList, setFavouriteImgList] = useState([]);
 
   const [loadingImgs, setLoadingImgs] = useState(false);
 
-  const [favouriteImgList, setFavouriteImgList] = useState([]);
+  const loadFavouriteArr = async () => {
+    const bozkovToken = localStorage.getItem("bozkovToken");
 
-  const init = async () => {
-    await setFavouriteImgList(await loadFavouriteArr());
-    await console.log(favouriteImgList);
+    let config = {
+      method: "get",
+      url: baseUrl + "api/artwork",
+      headers: {
+        Authorization: "Bearer " + bozkovToken,
+      },
+    };
+
+    const response = await axios(config);
+    const favourites = await response.data;
+    console.log(response.data);
+    await setFavouriteImgList(favourites);
+    // return favouriteImgList
   };
-
-  useEffect(() => {
-    init();
-  }, [email]);
-
-  useEffect(() => {
-    setFavouriteImgList(localStorage.getItem("favouriteImgList"));
-  }, [localStorage.getItem("favouriteImgList")]);
 
   const makeImgObj = async (id) => {
     const res = await axios.get(
@@ -89,12 +93,13 @@ function App() {
             email={"Guest"}
             setEmail={setEmail}
             setPassword={setPassword}
+            setFavouriteImgList={setFavouriteImgList}
           />
           <CardWrapper
             loadObjectIDs={loadObjectIDs}
             loadingImgs={loadingImgs}
             imgList={imgList}
-            favouriteImgList={favouriteImgList} //ellenőrizni kell, hogy a keresési találatok között van-e már elmentett kedvenc!
+            // favouriteImgList={favouriteImgList} //ellenőrizni kell, hogy a keresési találatok között van-e már elmentett kedvenc!
           />
           <ToTopButton />
           <Footer />
@@ -111,6 +116,7 @@ function App() {
               email={email}
               setEmail={setEmail}
               setPassword={setPassword}
+              setFavouriteImgList={setFavouriteImgList}
             />
             <CardWrapper
               loadObjectIDs={loadObjectIDs}
@@ -133,6 +139,7 @@ function App() {
               email={email}
               setEmail={setEmail}
               setPassword={setPassword}
+              setFavouriteImgList={setFavouriteImgList}
             />
             <ImageForm />
             <ToTopButton />
@@ -143,25 +150,25 @@ function App() {
 
       {
         //favourite page here
-        page === "favourite" && (
+        page === "favourite" && favouriteImgList && (
           <main className="main-page">
-            <Nav
+            {/* <Nav
               setPage={setPage}
               loadObjectIDs={loadObjectIDs}
               email={email}
               setEmail={setEmail}
               setPassword={setPassword}
-            />
+              setFavouriteImgList = {setFavouriteImgList}
+            /> */}
+            {console.log("itt vagyok a map/for előtt", favouriteImgList)}
             <ul>
-              for (const favouriteObj of favouriteImgList){" "}
-              {
-                <li key={favouriteObj.id}>
-                  {" "}
-                  <h1>{favouriteObj.title}</h1>
-                  <img src={favouriteObj.url} alt="" />
-                  {console.log(favouriteObj)}
-                </li>
-              }
+              {favouriteImgList.map(favouriteObj => (
+              <li key={favouriteObj.id}>
+                <h1>{favouriteObj.title}</h1>
+                <img src={"http://"+favouriteObj.url} alt="" />
+                {console.log(favouriteObj)}
+              </li>
+              ) )}
             </ul>
             <ToTopButton />
             <Footer />

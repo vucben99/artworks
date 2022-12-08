@@ -3,7 +3,7 @@ import Search from "./Search";
 import { useState, useEffect } from "react";
 import loadFavouriteArr from "../utils/loadFavouriteArr";
 
-function Nav({ email, setEmail, setPassword, setPage, loadObjectIDs }) {
+function Nav({ email, setEmail, setPassword, setPage, loadObjectIDs , setFavouriteImgList}) {
   const [yOffset, setYOffset] = useState(window.pageYOffset);
 
   useEffect(() => {
@@ -35,7 +35,9 @@ function Nav({ email, setEmail, setPassword, setPage, loadObjectIDs }) {
       </div>
       <div id="nav-user-section" className="desktop">
         <span
-          onClick={() => {
+          onClick={async () => {
+            const favourites = await loadFavouriteArr()
+            setFavouriteImgList(favourites)
             setPage("favourite");
           }}
         >
