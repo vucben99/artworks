@@ -6,14 +6,13 @@ const login = async (email, password, setPage) => {
     console.log(email,password);
     const response = await axios.post(baseUrl+"api/login", { email, password })
     await localStorage.setItem("bozkovToken",response.data.accessToken)
-    const bozkovToken = await localStorage.getItem("bozkovToken")
-    console.log("itt vagyok a loginban",bozkovToken);
-    console.log("itt vagyok a loginban",localStorage.getItem("bozkovToken"));
+    await localStorage.setItem("bozkovEmail",email)
+    
     return response.status
   } catch (error) {
     alert("Login failed \n Incorrect email or password")
     console.log(error, "asddadaaddad")
-    setPage("login")
+    // setPage("login")
     return response.status
   }
 }

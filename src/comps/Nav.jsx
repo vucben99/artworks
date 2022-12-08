@@ -54,7 +54,7 @@ function Nav({
             Favourite images
           </span>
         )}
-        {/*innen ugrunk a page favourite-re*/}
+        
         <span>{email}</span>
         <button
           className="logout"
@@ -63,6 +63,7 @@ function Nav({
             setEmail("");
             setPassword("");
             localStorage.setItem("bozkovToken", "");
+            localStorage.setItem("bozkovEmail", "");
           }}
         >
           {email==="Guest" ? "Login" : "Logout"}

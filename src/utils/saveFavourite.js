@@ -2,6 +2,7 @@ import baseUrl from "./baseUrl.json";
 import axios from "axios";
 
 const saveFavourite = async (imgObj) => {
+
   const bozkovToken = localStorage.getItem("bozkovToken");
 
   const title = imgObj.title;
@@ -26,6 +27,8 @@ const saveFavourite = async (imgObj) => {
   });
   // console.log(imgFile);
 
+  
+
   let myHeaders = new Headers();
   myHeaders.append("Authorization", "Bearer " + bozkovToken);
 
@@ -46,7 +49,7 @@ const saveFavourite = async (imgObj) => {
     .then((result) => console.log(result))
     .catch((error) => console.log("error", error));
 
-  console.log(response.status);
+  // console.log(response.status);
 };
 
 export default saveFavourite;

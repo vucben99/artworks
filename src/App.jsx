@@ -13,28 +13,34 @@ import ToTopButton from "./comps/ToTopButton";
 // import loadFavouriteArr from "./utils/loadFavouriteArr.js";
 
 function App() {
+  
+  
   //authorization
   //const [ loggedInUserId, setLoggedInUserId ] = useState(null)
   const [page, setPage] = useState("login"); //1.landing (register,login) - 2.guest (only searching) - 3.userSearch - 4.favourites - 5. formdata
-
+  
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  
   const selectedImages = basicImages
-    .sort(() => 0.5 - Math.random())
-    .slice(0, 20);
+  .sort(() => 0.5 - Math.random())
+  .slice(0, 20);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [imgList, setImgList] = useState(selectedImages);
   const [favouriteImgList, setFavouriteImgList] = useState([]);
-
+  
   const [loadingImgs, setLoadingImgs] = useState(false);
+  
+  useEffect(()=>{
+    if (localStorage.getItem("bozkovToken")) {
+      setEmail(localStorage.getItem("bozkovEmail"))
+      setPage("userSearch")
+    }
+  },[])
 
   const loadFavouriteArr = async () => {
     const bozkovToken = localStorage.getItem("bozkovToken");
-    console.log(
-      "App.jsx-ben a loadFavouriteben vagyok. bozkovToken:",
-      bozkovtoken
-    );
+ 
     let config = {
       method: "get",
       url: baseUrl + "api/artwork",

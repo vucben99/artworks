@@ -34,12 +34,14 @@ function Login({ setPage, email, setEmail, password, setPassword }) {
           {/* // ! Ideiglenesen gombra kattintva átirányít a guest-re!!!! !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */}
           <button
             className="login-button"
-            onClick={() => {
-              const status = login(email, password, setPage)
+            onClick={async (e) => {
+              e.preventDefault()
+              const status = await login(email, password, setPage)
              
               console.log("Status ==> ", status)
               if (status >= 400) {
-                setPage("login");
+                
+                // setPage("login");
                 console.log("Status ==> ", status)
               } else {
                 setPage("userSearch");
