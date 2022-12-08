@@ -9,11 +9,10 @@ const saveFavourite = async (imgObj) => {
     artist: imgObj.artist,
     date: imgObj.date,
     moreInfoUrl: imgObj.description,
-    url: imgObj.url,
-    tags: [],
+    url: imgObj.url
   };
 
-  //ide jön a bolb és a logikája
+  //ide jön a blob és a logikája
   const res = await fetch(imgObj.url, {
     mode: "no-cors",
   });
@@ -24,7 +23,7 @@ const saveFavourite = async (imgObj) => {
   const imgFile = await new File([imgBlob], "image.jpeg", {
     type: imgBlob.type,
   });
-  console.log(imgFile);
+  // console.log(imgFile);
 
   let myHeaders = new Headers();
   myHeaders.append("Authorization", "Bearer " + bozkovToken);
@@ -32,7 +31,7 @@ const saveFavourite = async (imgObj) => {
   let formdata = new FormData();
   formdata.append("file", imgFile);
   formdata.append("title", title);
-  formdata.append("description", JSON.stringify(description));
+  formdata.append("description", description);
 
   let requestOptions = {
     method: "POST",
