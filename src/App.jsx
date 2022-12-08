@@ -161,7 +161,7 @@ function App() {
                 <li key={favouriteObj.id}>
                   <h1>{favouriteObj.title}</h1>
                   <img src={favouriteObj.description.url} alt="" />
-                  {console.log(favouriteObj)}
+                  {console.log(typeof JSON.parse(favouriteObj.description), favouriteObj.description, JSON.parse("favouriteObj.description"))}
                 </li>
               ))}
             </ul>

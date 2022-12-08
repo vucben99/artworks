@@ -34,7 +34,7 @@ function Login({ setPage, email, setEmail, password, setPassword }) {
             className="login-button"
             onClick={() => {
               const status = login(email, password, setPage)
-              alert(status)
+             
               console.log("Status ==> ", status)
               if (status >= 400) {
                 setPage("login");

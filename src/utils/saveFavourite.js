@@ -5,13 +5,13 @@ const saveFavourite = async (imgObj) => {
   const bozkovToken = localStorage.getItem("bozkovToken");
 
   const title = imgObj.title;
-  const description = JSON.stringify({
+  const description = {
     artist: imgObj.artist,
     date: imgObj.date,
     moreInfoUrl: imgObj.description,
     url: imgObj.url,
     tags: [],
-  });
+  };
 
   //ide jön a bolb és a logikája
   const res = await fetch(imgObj.url, {
@@ -26,25 +26,8 @@ const saveFavourite = async (imgObj) => {
   });
   console.log(imgFile);
 
-  // const formdata = new FormData()
-  // formdata.append("imgfile",imgFile)
-  // formdata.append("title",title)
-  // formdata.append("description",JSON.stringify(description))
-
-  // const response = await fetch(baseUrl+"api/artwork",{
-  //   method: "POST",
-  //   headers: {
-  //     "Content-type": "multipart/formdata",
-  //     "Authorization": "Bearer "+bozkovToken
-  //   },
-  //   body: formdata
-  // })
-
   let myHeaders = new Headers();
-  myHeaders.append(
-    "Authorization",
-    "Bearer "+bozkovToken
-  );
+  myHeaders.append("Authorization", "Bearer " + bozkovToken);
 
   let formdata = new FormData();
   formdata.append("file", imgFile);
@@ -58,7 +41,7 @@ const saveFavourite = async (imgObj) => {
     redirect: "follow",
   };
 
-  fetch(baseUrl+"api/artwork", requestOptions)
+  fetch(baseUrl + "api/artwork", requestOptions)
     .then((response) => response.text())
     .then((result) => console.log(result))
     .catch((error) => console.log("error", error));
