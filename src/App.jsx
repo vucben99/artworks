@@ -97,10 +97,9 @@ function App() {
             loadObjectIDs={loadObjectIDs}
             loadingImgs={loadingImgs}
             imgList={imgList}
-            // favouriteImgList={favouriteImgList} //ellenőrizni kell, hogy a keresési találatok között van-e már elmentett kedvenc!
+          // favouriteImgList={favouriteImgList} //ellenőrizni kell, hogy a keresési találatok között van-e már elmentett kedvenc!
           />
           <ToTopButton />
-          <Footer />
         </main>
       )}
 
@@ -122,7 +121,6 @@ function App() {
               imgList={imgList}
             />
             <ToTopButton />
-            <Footer />
           </main>
         )
       }
@@ -141,7 +139,6 @@ function App() {
             />
             <ImageForm />
             <ToTopButton />
-            <Footer />
           </main>
         )
       }
@@ -156,20 +153,19 @@ function App() {
               email={email}
               setEmail={setEmail}
               setPassword={setPassword}
-              setFavouriteImgList = {setFavouriteImgList}
+              setFavouriteImgList={setFavouriteImgList}
             />
             {console.log("itt vagyok a map/for előtt", favouriteImgList.description)}
             <ul>
               {favouriteImgList.map(favouriteObj => (
-              <li key={favouriteObj.id}>
-                <h1>{favouriteObj.title}</h1>
-                <img src={favouriteObj.description.url} alt="" />
-                {console.log(favouriteObj)}
-              </li>
-              ) )}
+                <li key={favouriteObj.id}>
+                  <h1>{favouriteObj.title}</h1>
+                  <img src={favouriteObj.description.url} alt="" />
+                  {console.log(favouriteObj)}
+                </li>
+              ))}
             </ul>
             <ToTopButton />
-            <Footer />
           </main>
         )
       }
@@ -197,6 +193,7 @@ function App() {
           />
         </main>
       )}
+      <Footer />
     </div>
   );
 }
