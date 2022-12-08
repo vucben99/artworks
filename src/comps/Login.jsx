@@ -17,6 +17,7 @@ function Login({ setPage, email, setEmail, password, setPassword }) {
             label="Email"
             variant="outlined"
             value={email}
+            autoComplete="off"
             onChange={(e) => setEmail(e.target.value)}
           />
           <TextField
@@ -24,6 +25,7 @@ function Login({ setPage, email, setEmail, password, setPassword }) {
             label="Password"
             variant="outlined"
             type="password"
+            autoComplete="off"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />

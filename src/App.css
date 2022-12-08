@@ -9,7 +9,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    user-select: none;
+    /* user-select: none; */
     transition: filter 0.15s, color 0.05s, transform 0.15s;
     scroll-behavior: smooth;
 }
@@ -67,4 +67,9 @@ a {
         display: none !important;
     }
 
+}
+
+
+.favouriteContainer {
+    margin-top: 8rem;
 }

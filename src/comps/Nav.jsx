@@ -3,7 +3,15 @@ import Search from "./Search";
 import { useState, useEffect } from "react";
 import loadFavouriteArr from "../utils/loadFavouriteArr";
 
-function Nav({ email, setEmail, setPassword, setPage, loadObjectIDs , setFavouriteImgList}) {
+function Nav({
+  email,
+  setEmail,
+  setPassword,
+  page,
+  setPage,
+  loadObjectIDs,
+  setFavouriteImgList,
+}) {
   const [yOffset, setYOffset] = useState(window.pageYOffset);
 
   useEffect(() => {
@@ -31,30 +39,33 @@ function Nav({ email, setEmail, setPassword, setPage, loadObjectIDs , setFavouri
     <nav id="navbar">
       <h1>Bozkov Art Magazine</h1>
       <div className="desktop">
-        <Search loadObjectIDs={loadObjectIDs} />
+        <Search loadObjectIDs={loadObjectIDs} setPage={setPage} />
       </div>
       <div id="nav-user-section" className="desktop">
-        <span
-          onClick={async () => {
-            const favourites = await loadFavouriteArr()
-            console.log("itt vagyok az asszink onClickben",favourites)
-            await setFavouriteImgList(favourites)
-            await setPage("favourite");
-          }}
-        >
-          Favourite images
-        </span>{" "}
+        {email !== "Guest" && (
+          <span
+            onClick={async () => {
+              const favourites = await loadFavouriteArr();
+              console.log("itt vagyok az asszink onClickben", favourites);
+              await setFavouriteImgList(favourites);
+              await setPage("favourite");
+            }}
+          >
+            Favourite images
+          </span>
+        )}
         {/*innen ugrunk a page favourite-re*/}
-        <span>{email ? email : "Guest"}</span>
+        <span>{email}</span>
         <button
           className="logout"
           onClick={() => {
             setPage("login");
             setEmail("");
             setPassword("");
+            localStorage.setItem("bozkovToken", "");
           }}
         >
-          Logout
+          {email==="Guest" ? "Login" : "Logout"}
         </button>
       </div>
     </nav>

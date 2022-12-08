@@ -31,7 +31,10 @@ function App() {
 
   const loadFavouriteArr = async () => {
     const bozkovToken = localStorage.getItem("bozkovToken");
-    console.log("App.jsx-ben a loadFavouriteben vagyok. bozkovToken:", bozkovtoken)
+    console.log(
+      "App.jsx-ben a loadFavouriteben vagyok. bozkovToken:",
+      bozkovtoken
+    );
     let config = {
       method: "get",
       url: baseUrl + "api/artwork",
@@ -92,12 +95,13 @@ function App() {
             setEmail={setEmail}
             setPassword={setPassword}
             setFavouriteImgList={setFavouriteImgList}
+            page={page}
           />
           <CardWrapper
             loadObjectIDs={loadObjectIDs}
             loadingImgs={loadingImgs}
             imgList={imgList}
-          // favouriteImgList={favouriteImgList} //ellenőrizni kell, hogy a keresési találatok között van-e már elmentett kedvenc!
+            // favouriteImgList={favouriteImgList} //ellenőrizni kell, hogy a keresési találatok között van-e már elmentett kedvenc!
           />
           <ToTopButton />
         </main>
@@ -114,6 +118,7 @@ function App() {
               setEmail={setEmail}
               setPassword={setPassword}
               setFavouriteImgList={setFavouriteImgList}
+              page={page}
             />
             <CardWrapper
               loadObjectIDs={loadObjectIDs}
@@ -136,6 +141,7 @@ function App() {
               setEmail={setEmail}
               setPassword={setPassword}
               setFavouriteImgList={setFavouriteImgList}
+              page={page}
             />
             <ImageForm />
             <ToTopButton />
@@ -154,14 +160,22 @@ function App() {
               setEmail={setEmail}
               setPassword={setPassword}
               setFavouriteImgList={setFavouriteImgList}
+              page={page}
             />
-            {console.log("itt vagyok a map/for előtt", favouriteImgList.description)}
-            <ul>
-              {favouriteImgList.map(favouriteObj => (
+            {console.log(
+              "itt vagyok a map/for előtt",
+              favouriteImgList
+            )}
+            <ul className="favouriteContainer">
+              {favouriteImgList.map((favouriteObj) => (
                 <li key={favouriteObj.id}>
-                  <h1>{favouriteObj.title}</h1>
-                  <img src={favouriteObj.description.url} alt="" />
-                  {console.log(typeof favouriteObj.description, favouriteObj.description)}
+                  <img
+                    src={favouriteObj.description}
+                    alt=""
+                    width="300px"
+                  />
+                  <h2>{favouriteObj.title}</h2>
+       
                 </li>
               ))}
             </ul>

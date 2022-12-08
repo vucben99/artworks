@@ -5,12 +5,13 @@ const saveFavourite = async (imgObj) => {
   const bozkovToken = localStorage.getItem("bozkovToken");
 
   const title = imgObj.title;
-  const description = {
-    artist: imgObj.artist,
-    date: imgObj.date,
-    moreInfoUrl: imgObj.description,
-    url: imgObj.url
-  };
+  // const description = {
+  //   artist: imgObj.artist,
+  //   date: imgObj.date,
+  //   moreInfoUrl: imgObj.description,
+  //   url: imgObj.url
+  // };
+  const description = imgObj.url
 
   //ide jön a blob és a logikája
   const res = await fetch(imgObj.url, {
