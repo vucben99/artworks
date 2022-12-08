@@ -160,12 +160,12 @@ function App() {
               setPassword={setPassword}
               setFavouriteImgList = {setFavouriteImgList}
             />
-            {console.log("itt vagyok a map/for előtt", favouriteImgList)}
+            {console.log("itt vagyok a map/for előtt", favouriteImgList.description)}
             <ul>
               {favouriteImgList.map(favouriteObj => (
               <li key={favouriteObj.id}>
                 <h1>{favouriteObj.title}</h1>
-                <img src={favouriteObj.url.slice(0,favouriteObj.url.length-5)+"&"+localStorage.getItem("bozkovToken")} alt="" />
+                <img src={favouriteObj.description.url} alt="" />
                 {console.log(favouriteObj)}
               </li>
               ) )}

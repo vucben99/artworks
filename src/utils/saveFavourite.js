@@ -5,13 +5,13 @@ const saveFavourite = async (imgObj) => {
   const bozkovToken = localStorage.getItem("bozkovToken");
 
   const title = imgObj.title;
-  const description = {
+  const description = JSON.stringify({
     artist: imgObj.artist,
     date: imgObj.date,
     moreInfoUrl: imgObj.description,
     url: imgObj.url,
     tags: [],
-  };
+  });
 
   //ide jön a bolb és a logikája
   const res = await fetch(imgObj.url, {
@@ -49,7 +49,7 @@ const saveFavourite = async (imgObj) => {
   let formdata = new FormData();
   formdata.append("file", imgFile);
   formdata.append("title", title);
-  formdata.append("description", description);
+  formdata.append("description", JSON.stringify(description));
 
   let requestOptions = {
     method: "POST",
